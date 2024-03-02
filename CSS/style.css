@@ -1,0 +1,63 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ 
+ 
+ }
+ 
+ body{
+ 
+   height: 100vh;
+ 
+ }
+ 
+ 
+ header{height: 10vh;}
+ 
+ 
+ main{height: 90vh;}
+ 
+ .myGrid{
+   height: 80vh ;
+   aspect-ratio: 1;
+   background-image: url("../IMG/boolean-logo.png");
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position-y: center;
+   
+ 
+ }
+ 
+ img{
+   height: 100%;
+   width: 100%;
+ 
+ }
+ 
+ 
+ .square{
+   
+   aspect-ratio: 1;
+   background-color:orange;
+   border: 1px solid white;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   cursor: pointer;
+ 
+ 
+ }
+ 
+ .square.easy{
+ 
+   width: calc(100%/10);
+ }
+ .square.middle{
+ 
+   width: calc(100%/9);
+ }
+ .square.difficult{
+ 
+   width: calc(100%/7);
+ }
