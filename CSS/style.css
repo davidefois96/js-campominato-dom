@@ -18,7 +18,7 @@ header{height: 10vh;}
 main{height: 90vh;}
  
 .myGrid{
-  height: 80vh ;
+  height: 70vh ;
   aspect-ratio: 1;
   background-image: url("../IMG/boolean-logo.png");
   background-repeat: no-repeat;

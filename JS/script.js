@@ -1,7 +1,8 @@
 const myGrid = document.querySelector('.myGrid');
 const btn = document.querySelector('button');
 const sel = document.querySelector('select');
-const appear =document.querySelector('appear');
+const messageGame = document.querySelector('.messageGame');
+const appear = document.querySelector('appear');
 const numCells = ['100','81','49'];
 const numBombs = 16;
 const arrayBombs = [];
@@ -14,65 +15,52 @@ let = contWin = 0;
 
 
 
+messageGame.innerHTML= `<h1 class=" fs-4 text-danger "> Seleziona una difficoltà in alto a sinistra!</h1>`;
 
-console.log(btn);
-alert(' Benvenuto ! per giocare premi gioca!');
-
-btn.addEventListener('click', function(){
+sel.addEventListener('click', function(){
 
   reset();
 
-  alert('scegli la difficoltà ');
+  arrayBombs.splice(0);
 
-  sel.addEventListener('click', function(){
+  messageGame.innerHTML= `<h1 class=" fs-4 text-danger "> dopo aver selezionato la difficoltà premi gioca in alto a destra!</h1>`;
 
-    reset();
-
-    arrayBombs.splice(0);
-
-    genBombs();
-
-    selclass(sel.value);
-
-    console.log(arrayBombs);
-
-
-
-    
-
-    for (let i = 1; i <= sel.value; i++) {
-
-    
-
-       
-      const box = addSquare(i);
-    
-      
-      box.classList.add('d-flex','square',`${clasSquare}`);
-
-      
-
-      myGrid.append(box);
-
-      arrayCell.push(box);
-
-      bombcontrol(box,i);
-
-      
-
-      
-
-     
-    }
-
-    
-   
-
-  })
   
-
-
 })
+
+
+btn.addEventListener('click', function(){
+
+  messageGame.innerHTML= `<h1 class=" fs-4 text-danger "> Buona fortuna!</h1>`;
+
+  reset();
+
+  genBombs();
+
+  console.log(arrayBombs);
+
+  selclass(sel.value);
+
+
+  for (let i = 1; i <= sel.value; i++) {
+ 
+    const box = addSquare(i);
+  
+    box.classList.add('d-flex','square',`${clasSquare}`);
+
+    myGrid.append(box);
+
+    arrayCell.push(box);
+
+    bombcontrol(box,i);
+
+
+  }
+
+  
+  
+})
+
 
 function addSquare(num){
 
@@ -118,7 +106,7 @@ function genBombs(){
   } 
 
     
-  } while (arrayBombs.length < 16 );
+  } while (arrayBombs.length < numBombs );
 
   return arrayBombs;
  
@@ -135,23 +123,20 @@ function bombcontrol(string,number){
 
     if (arrayBombs.includes(number)) {
 
-      
-      this.classList.add('bg-danger');
-
       for (let i = 1; i <= sel.value; i++) {
 
         if (arrayBombs.includes(i)) {
 
-          arrayCell[i].classList.add('bg-danger');
+          arrayCell[i-1].classList.add('bg-danger');
           
         }
 
        
       }
-      
-      alert(`hai preso una bomba e hai totalizzato ${contWin} punti!`);
 
-      appear.classList.add('position-absolute','bg-black','opacity-50');
+      
+      messageGame.innerHTML= `<h1 class=" fs-4 text-danger "> Hai preso la bomba il tuo punteggio è ${contWin} punti!  </h1>`;
+
 
     } else {
 
@@ -162,8 +147,7 @@ function bombcontrol(string,number){
     }
 
   })
-
-
+  
 }
 
 function selclass(params) {
