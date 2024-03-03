@@ -20,3 +20,20 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 3. **BONUS 2 :**
 - accendere tutte le bombe
 - congelare la griglia
+
+PLAY
+- leggo la proprietà della griglia (livello)
+- RESET
+- genero il playground
+- genero le bombeCLICK DELLA CELLA
+- verifico se è una bomba
+  SI -> FINE GIOCO
+  NO -> - coloro la cella
+        - incremento il contatore (se non è stata già cliccata)
+        - verifico se il punteggio è vincente -> SI -> FINE GIOCORESET
+- cancella la griglia
+- azzero il contatore
+- svuoto l’array delle bombeFINE GIOCO
+- accendere tutte le bombe
+- congelo la griglia
+- stampo il messaggio finale con punteggio. Messaggio diverso se vince o perde.
