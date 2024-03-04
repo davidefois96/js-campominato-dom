@@ -2,6 +2,7 @@ const myGrid = document.querySelector('.myGrid');
 const btn = document.querySelector('button');
 const sel = document.querySelector('select');
 const messageGame = document.querySelector('.messageGame');
+const cover = document.querySelector('span');
 const numCells = ['100','81','49'];
 const numBombs = 16;
 const arrayBombs = [];
@@ -23,7 +24,8 @@ sel.addEventListener('click', function(){
   arrayBombs.splice(0);
 
   messageGame.innerHTML= `<h1 class=" fs-4 text-danger "> dopo aver selezionato la difficoltà premi gioca in alto a destra!</h1>`;
-
+  
+  remCov();
   
 })
 
@@ -43,11 +45,12 @@ btn.addEventListener('click', function(){
  
     const box = addSquare(i);
   
-    box.classList.add('d-flex','square',`${clasSquare}`);
+    //spostarlo nella generazione degli square
+     
 
     myGrid.append(box);
 
-    arrayCell.push(box);
+    
 
     
     box.addEventListener('click', function(){
@@ -68,7 +71,7 @@ btn.addEventListener('click', function(){
           contWin++;
 
 
-        }else if (!contWin<sel.value-numBombs){
+        }else if (!contWin<(sel.value-numBombs)){
 
           endGame();
 
@@ -77,8 +80,10 @@ btn.addEventListener('click', function(){
       }
     })
 
-
+    remCov();
   }
+
+  
 
 })
 
@@ -89,9 +94,13 @@ function addSquare(num){
 
   const square= document.createElement('div');
 
+  square.classList.add('d-flex','square',`${clasSquare}`);
+
   square._id= num;
 
   square.innerHTML= num;
+
+  arrayCell.push(square);
 
   return square;
 
@@ -167,7 +176,7 @@ function endGame() {
   }
 
   
-  if (contWin<sel.value-numBombs){
+  if (contWin<(sel.value-numBombs)){
 
     messageGame.innerHTML= `<h1 class=" fs-4 text-danger "> Hai totalizzato ${contWin} punti! </h1>`;
     
@@ -179,6 +188,21 @@ function endGame() {
    
   }
 
+ 
+  cov();
 
+
+}
+
+
+function cov() {
+
+  return  cover.classList.remove('d-none');
+  
+}
+
+function remCov(){
+
+  return  cover.classList.add('d-none');
 
 }
